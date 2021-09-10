@@ -52,4 +52,5 @@ class BrutalSocket extends EventEmitter {
     }
 }
 exports.default = BrutalSocket;
+module.exports = BrutalSocket;
 //# sourceMappingURL=index.js.map
