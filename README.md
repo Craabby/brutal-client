@@ -1,2 +1,2 @@
 # brutal-client
-## This was inspired my [DiepSocket](https://github.com/Cazka/diepsocket)
+## This was inspired by [DiepSocket](https://github.com/Cazka/diepsocket)
