@@ -41,7 +41,7 @@ export default class BrutalSocket extends EventEmitter {
   }
 
   private _onmessage(msg: Buffer, isBinary: boolean): void {
-    super.emit("message", msg, isBinary)
+    this.emit("message", msg, isBinary)
   }
 
   private _onerr(err: Error): void {
@@ -53,7 +53,7 @@ export default class BrutalSocket extends EventEmitter {
   }
 
   private _onopen(): void {
-    super.emit("open")
+    this.emit("open")
     this.send("ping")
     this.send("init")
   }
