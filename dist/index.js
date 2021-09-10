@@ -29,7 +29,7 @@ class BrutalSocket extends EventEmitter {
         });
     }
     _onmessage(msg, isBinary) {
-        super.emit("message", msg, isBinary);
+        this.emit("message", msg, isBinary);
     }
     _onerr(err) {
         this.emit("error", err);
@@ -38,7 +38,7 @@ class BrutalSocket extends EventEmitter {
         this.emit("close", code);
     }
     _onopen() {
-        super.emit("open");
+        this.emit("open");
         this.send("ping");
         this.send("init");
     }
