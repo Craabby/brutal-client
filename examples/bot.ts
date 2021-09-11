@@ -1,5 +1,4 @@
 import BrutalSocket from "../src"
-import Vector from "../src/vector"
 
 const bot: BrutalSocket = new BrutalSocket("ws://158.69.123.15:8090/")
 
@@ -18,10 +17,9 @@ bot.on("error", (error: Error) => {
 
 bot.on("message", (msg: Buffer, isBinary: boolean) => {
   bot.send("input", {
-    mouse: new Vector(100, 100),
+    mouse: new BrutalSocket.Vector(100, 100),
     flags: {
       playerIsMoving: true,
-      windowIsFocused: true,
     },
   })
 })
