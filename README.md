@@ -4,7 +4,8 @@
 
 ## Credits
 
-Thanks to [Cazka](https://github.com/Cazka) [DiepSocket](https://github.com/Cazka/diepsocket)
+Thanks to [Cazka](https://github.com/Cazka), I got a lot of inspiration from [DiepSocket](https://github.com/Cazka/diepsocket)
+
 Thanks to [Snoopy](https://github.com/sudosnoopy) for providing a lot of info on the [packets](https://github.com/sudosnoopy/brutal-io-info) 
 
 ## Installation
