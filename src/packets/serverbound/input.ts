@@ -1,8 +1,5 @@
 import { Writer } from "../../coder"
-import Vector from "../../vector"
 import InputPacket from "../../interfaces/inputPacket";
-
-
 
 module.exports = (data: InputPacket): ArrayBuffer => {
   const writer = new Writer()

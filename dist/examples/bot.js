@@ -13,7 +13,6 @@ bot.on("close", (code) => {
 bot.on("error", (error) => {
     console.log("bot error", error);
 });
-console.log(src_1.default.Vector);
 bot.on("message", (packet) => {
     bot.send("input", {
         mouse: new src_1.default.Vector(100, 100),

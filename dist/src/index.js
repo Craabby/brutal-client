@@ -53,6 +53,7 @@ class BrutalSocket extends EventEmitter {
         this.send("spawn", name);
     }
 }
+BrutalSocket.Vector = vector_1.default; // im not sure what the `any` should be. when it is Vector, i get compiler errors
 exports.default = BrutalSocket;
-BrutalSocket.Vector = vector_1.default; // im not sure what this should be. when it is Vector, i get compiler errors
+module.exports = BrutalSocket;
 //# sourceMappingURL=index.js.map
