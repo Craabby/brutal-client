@@ -11,6 +11,7 @@ Thanks to [Snoopy](https://github.com/sudosnoopy) for providing a lot of info on
 ## Installation
 
 `git clone https://github.com/Craabby/brutal-client.git`
+and once that finishes, run `npm install`
 
 ## Making a connection
 
