@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.encode = void 0;
+exports.decode = exports.encode = void 0;
 const serverbound = {
     ping: require("./serverbound/ping"),
     init: require("./serverbound/init"),
@@ -9,6 +9,20 @@ const serverbound = {
     // resizeWindow: 7,
     // click: 8,
 };
+const clientbound = {
+    leaderboard: require("./clientbound/leaderboard"),
+    unknown: require("./clientbound/unknown"),
+};
+const clientboundOpcodes = {
+    [0x00]: "unknown",
+    [0xa0]: "unknown",
+    [0xa1]: "unknown",
+    [0xa4]: "unknown",
+    [0xa6]: "unknown",
+    [0xb4]: "unknown",
+    [0xa5]: "leaderboard",
+    [0xb5]: "leaderboard", // all scores are a u32
+};
 function encode(type, data) {
     if (!serverbound.hasOwnProperty(type)) {
         throw new Error(`Unsuppored packet '${type}'`);
@@ -16,4 +30,10 @@ function encode(type, data) {
     return serverbound[type](data);
 }
 exports.encode = encode;
+function decode(data) {
+    const opcode = new Uint8Array(data)[0];
+    const type = clientboundOpcodes[opcode];
+    return clientbound[type](opcode, data);
+}
+exports.decode = decode;
 //# sourceMappingURL=index.js.map

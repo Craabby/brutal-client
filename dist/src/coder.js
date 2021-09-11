@@ -51,8 +51,8 @@ class Writer {
 exports.Writer = Writer;
 class Reader {
     constructor(array) {
-        this.buffer = array;
-        this.view = new DataView(this.buffer.buffer);
+        this.buffer = new Uint8Array(array).buffer;
+        this.view = new DataView(this.buffer);
         this.offset = 0;
     }
     u8() {
@@ -96,12 +96,14 @@ class Reader {
         return val;
     }
     string() {
-        const start = this.offset;
-        while (this.u16())
-            ; // keep going until a null char
-        const end = this.offset;
-        const raw = new Uint8Array(this.buffer).subarray(start, end);
-        return new TextDecoder().decode(raw);
+        let finishedString = "";
+        while (true) {
+            const currentCharCode = this.u16();
+            if (currentCharCode === 0)
+                break; // keep going until a null char
+            finishedString += String.fromCharCode(currentCharCode);
+        }
+        return finishedString;
     }
 }
 exports.Reader = Reader;

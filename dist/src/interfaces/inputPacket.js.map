@@ -1,0 +1,1 @@
+{"version":3,"file":"inputPacket.js","sourceRoot":"","sources":["../../../src/interfaces/inputPacket.ts"],"names":[],"mappings":"","sourcesContent":["import Vector from \"../vector\"\n\ninterface InputPacket {\n  mouse: Vector\n  flags: {\n    playerIsMoving: boolean\n  }\n}\n\nexport default InputPacket\n"]}

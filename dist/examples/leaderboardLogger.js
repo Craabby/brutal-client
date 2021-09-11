@@ -4,7 +4,7 @@ const src_1 = require("../src");
 const bot = new src_1.default("ws://158.69.123.15:8100/");
 bot.on("open", () => {
     setInterval(() => {
-        bot.spawn("ddddddddddddddd");
+        bot.spawn("brutal-client");
     }, 1000);
 });
 bot.on("close", (code) => {
@@ -13,13 +13,11 @@ bot.on("close", (code) => {
 bot.on("error", (error) => {
     console.log("bot error", error);
 });
-console.log(src_1.default.Vector);
 bot.on("message", (packet) => {
-    bot.send("input", {
-        mouse: new src_1.default.Vector(100, 100),
-        flags: {
-            playerIsMoving: true,
-        },
-    });
+    if (packet.type === "leaderboard") {
+        console.log(packet.data);
+        bot.socket.close();
+        process.exit();
+    }
 });
-//# sourceMappingURL=bot.js.map
+//# sourceMappingURL=leaderboardLogger.js.map

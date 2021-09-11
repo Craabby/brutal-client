@@ -5,7 +5,7 @@ const bot: BrutalSocket = new BrutalSocket("ws://158.69.123.15:8100/")
 
 bot.on("open", () => {
   setInterval(() => {
-    bot.spawn("ddddddddddddddd")
+    bot.spawn("brutal-client")
   }, 1000)
 })
 
@@ -16,13 +16,10 @@ bot.on("error", (error: Error) => {
   console.log("bot error", error)
 })
 
-console.log(BrutalSocket.Vector);
-
 bot.on("message", (packet: ParsedClientboundPacket) => {
-  bot.send("input", {
-    mouse: new BrutalSocket.Vector(100, 100),
-    flags: {
-      playerIsMoving: true,
-    },
-  })
+  if (packet.type === "leaderboard") {
+    console.log(packet.data);
+    bot.socket.close();
+    process.exit()
+  }
 })

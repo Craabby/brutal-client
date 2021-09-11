@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const packets_1 = require("./packets");
+const vector_1 = require("./vector");
 const WebSocket = require("ws");
 const url = require("url");
 const HttpsProxyAgent = require("https-proxy-agent");
@@ -29,7 +30,8 @@ class BrutalSocket extends EventEmitter {
         });
     }
     _onmessage(msg, isBinary) {
-        this.emit("message", msg, isBinary);
+        const parsed = (0, packets_1.decode)(msg);
+        this.emit("message", parsed);
     }
     _onerr(err) {
         this.emit("error", err);
@@ -52,4 +54,5 @@ class BrutalSocket extends EventEmitter {
     }
 }
 exports.default = BrutalSocket;
+BrutalSocket.Vector = vector_1.default; // im not sure what this should be. when it is Vector, i get compiler errors
 //# sourceMappingURL=index.js.map

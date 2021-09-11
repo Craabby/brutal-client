@@ -1,0 +1,1 @@
+{"version":3,"file":"leaderboardEntry.js","sourceRoot":"","sources":["../../../src/interfaces/leaderboardEntry.ts"],"names":[],"mappings":"","sourcesContent":["interface LeaderboardEntry {\n  name: string;\n  id: number;\n  score: number;\n}\n\nexport default LeaderboardEntry"]}

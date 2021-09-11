@@ -1,14 +1,10 @@
 import { Writer } from "../../coder"
 import Vector from "../../vector"
+import InputPacket from "../../interfaces/inputPacket";
 
-type inputPacket = {
-  mouse: Vector
-  flags: {
-    playerIsMoving: boolean
-  }
-}
 
-module.exports = (data: inputPacket): ArrayBuffer => {
+
+module.exports = (data: InputPacket): ArrayBuffer => {
   const writer = new Writer()
   let flags = 0
 

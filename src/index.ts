@@ -1,15 +1,17 @@
-import { encode } from "./packets"
+import { encode, decode } from "./packets"
+import ParsedClientboundPacket from "./interfaces/parsedClientboundPacket"
+import Vector from "./vector"
 import * as WebSocket from "ws"
 import * as url from "url"
-import Vector from "./vector";
 
 const HttpsProxyAgent = require("https-proxy-agent")
 const EventEmitter = require("events")
 
 export default class BrutalSocket extends EventEmitter {
-  public static readonly Vector: any // im not sure what this should be. when it is Vector, i get compiler errors
+  public static Vector: any = Vector // im not sure what this should be. when it is Vector, i get compiler errors
   public socket: WebSocket
   public server: string
+
 
   constructor(server: string, options?: any) {
     super()
@@ -43,7 +45,8 @@ export default class BrutalSocket extends EventEmitter {
   }
 
   private _onmessage(msg: Buffer, isBinary: boolean): void {
-    this.emit("message", msg, isBinary)
+    const parsed: ParsedClientboundPacket = decode(msg)
+    this.emit("message", parsed)
   }
 
   private _onerr(err: Error): void {
@@ -60,7 +63,7 @@ export default class BrutalSocket extends EventEmitter {
     this.send("init")
   }
 
-  public send(type: string, data?: any): void{
+  public send(type: string, data?: any): void {
     if (this.socket.readyState == WebSocket.OPEN) {
       this.socket.send(encode(type, data))
     }

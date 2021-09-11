@@ -49,13 +49,13 @@ export class Writer {
 }
 
 export class Reader {
-  public buffer: Buffer
+  public buffer: ArrayBuffer
   public view: DataView
   public offset: number
 
   constructor(array: Buffer) {
-    this.buffer = array
-    this.view = new DataView(this.buffer.buffer)
+    this.buffer = new Uint8Array(array).buffer
+    this.view = new DataView(this.buffer)
     this.offset = 0
   }
   public u8() {
@@ -98,11 +98,16 @@ export class Reader {
     this.offset += 8
     return val
   }
-  public string() {
-    const start = this.offset
-    while (this.u16()); // keep going until a null char
-    const end = this.offset
-    const raw = new Uint8Array(this.buffer).subarray(start, end)
-    return new TextDecoder().decode(raw)
+  public string(): string {
+    let finishedString: string = ""
+
+    while (true) {
+      const currentCharCode = this.u16();
+      if (currentCharCode === 0) break // keep going until a null char
+      
+      finishedString += String.fromCharCode(currentCharCode)
+    }
+
+    return finishedString
   }
 }
