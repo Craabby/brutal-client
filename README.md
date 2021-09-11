@@ -2,7 +2,10 @@
 
 [![license](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
-## This was inspired by [DiepSocket](https://github.com/Cazka/diepsocket)
+## Credits
+
+Thanks to [Cazka](https://github.com/Cazka) [DiepSocket](https://github.com/Cazka/diepsocket)
+Thanks to [Snoopy](https://github.com/sudosnoopy) for providing a lot of info on the [packets](https://github.com/sudosnoopy/brutal-io-info) 
 
 ## Installation
 
@@ -15,14 +18,15 @@ const BrutalClient = require("./brutal-client") // brutal-client must be in the 
 
 const bot = new BrutalClient("enter websocket url here")
 
-bot.on("open", () => { // when the websocket connection is finished, run the code in the function
-  bot.spawn("brutal-client"); // makes the bot spawn into the game with the name "brutal-client"
+bot.on("open", () => {
+  // when the websocket connection is finished, run the code in the function
+  bot.spawn("brutal-client") // makes the bot spawn into the game with the name "brutal-client"
 
   bot.send("input", {
     mouse: new BrutalSocket.Vector(100, 100), // makes the bot's mouse position be 100, 100
     flags: {
-      playerIsMoving: true, 
+      playerIsMoving: true,
     },
-  });
-});
+  })
+})
 ```
