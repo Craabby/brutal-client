@@ -16,8 +16,6 @@ bot.on("error", (error: Error) => {
   console.log("bot error", error)
 })
 
-console.log(BrutalSocket.Vector);
-
 bot.on("message", (packet: ParsedClientboundPacket) => {
   bot.send("input", {
     mouse: new BrutalSocket.Vector(100, 100),
