@@ -8,7 +8,7 @@ const HttpsProxyAgent = require("https-proxy-agent")
 const EventEmitter = require("events")
 
 export default class BrutalSocket extends EventEmitter {
-  public static Vector: any = Vector // im not sure what this should be. when it is Vector, i get compiler errors
+  public static Vector: any = Vector // im not sure what the `any` should be. when it is Vector, i get compiler errors
   public socket: WebSocket
   public server: string
 
