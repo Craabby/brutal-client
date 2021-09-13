@@ -30,7 +30,7 @@ class BrutalSocket extends EventEmitter {
         });
     }
     _onmessage(msg, isBinary) {
-        const parsed = (0, packets_1.decode)(msg);
+        const parsed = (0, packets_1.decode)(msg, this);
         this.emit("message", parsed);
     }
     _onerr(err) {
@@ -46,7 +46,7 @@ class BrutalSocket extends EventEmitter {
     }
     send(type, data) {
         if (this.socket.readyState == WebSocket.OPEN) {
-            this.socket.send((0, packets_1.encode)(type, data));
+            this.socket.send((0, packets_1.encode)(type, data, this));
         }
     }
     spawn(name) {
@@ -55,5 +55,4 @@ class BrutalSocket extends EventEmitter {
 }
 BrutalSocket.Vector = vector_1.default; // im not sure what the `any` should be. when it is Vector, i get compiler errors
 exports.default = BrutalSocket;
-module.exports = BrutalSocket;
 //# sourceMappingURL=index.js.map

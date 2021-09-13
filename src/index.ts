@@ -44,7 +44,7 @@ class BrutalSocket extends EventEmitter {
   }
 
   private _onmessage(msg: Buffer, isBinary: boolean): void {
-    const parsed: ParsedClientboundPacket = decode(msg)
+    const parsed: ParsedClientboundPacket = decode(msg, this)
     this.emit("message", parsed)
   }
 
@@ -64,7 +64,7 @@ class BrutalSocket extends EventEmitter {
 
   public send(type: string, data?: any): void {
     if (this.socket.readyState == WebSocket.OPEN) {
-      this.socket.send(encode(type, data))
+      this.socket.send(encode(type, data, this))
     }
   }
 
@@ -74,4 +74,3 @@ class BrutalSocket extends EventEmitter {
 }
 
 export default BrutalSocket
-module.exports = BrutalSocket

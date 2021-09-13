@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function returnUnkownPacket(opcode, data) {
+function returnUnkownPacket(data) {
     return { type: "unknown", data };
 }
 exports.default = returnUnkownPacket;

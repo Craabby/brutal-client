@@ -1,6 +1,6 @@
 import ParsedClientboundPacket from "../../interfaces/parsedClientboundPacket"
 
-function returnUnkownPacket(opcode: number, data: Buffer): ParsedClientboundPacket {
+function returnUnkownPacket(data: Buffer): ParsedClientboundPacket {
   return { type: "unknown", data }
 }
 
