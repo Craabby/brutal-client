@@ -11,7 +11,10 @@ Thanks to [Snoopy](https://github.com/sudosnoopy) for providing a lot of info on
 ## Installation
 
 `git clone https://github.com/Craabby/brutal-client`
-and once that finishes, run `npm install`
+
+and once that finishes, run `npm install; cd brutal-client; npm run build`
+
+or, you could install from npm `npm i brutal-client`
 
 ## Making a connection
 
