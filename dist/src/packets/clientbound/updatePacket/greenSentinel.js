@@ -15,7 +15,7 @@ class GreenSentinel {
         packet.u16(); // again calvin?
         this.position = new vector_1.default(packet.f32(), -packet.f32()).multiply(10);
         this.angle = packet.f32();
-        if (packet.u16())
+        if (packet.u8())
             this.impulseValue = 1;
         if (isCreation) {
             this.positive = packet.u8();
@@ -23,7 +23,7 @@ class GreenSentinel {
         }
     }
     deleteNetwork(packet) {
-        packet.u8;
+        packet.u8();
     }
 }
 exports.default = GreenSentinel;

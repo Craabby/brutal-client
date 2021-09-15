@@ -12,25 +12,26 @@ function parseUpdatePacket(data, bot) {
     bot.lag = Date.now() - bot._lastUpdatePacket;
     bot._lastUpdatePacket = Date.now();
     const packet = new coder_1.Reader(data);
+    packet.offset = 1;
     while (true) {
         const currentId = packet.u16();
         if (currentId === 0) {
-            if (packet.offset !== Buffer.length) {
+            if (packet.offset !== data.byteLength) {
                 const kingId = packet.u16();
                 if (kingId !== 0) {
-                    const kingX = packet.u16();
-                    const kingY = packet.u16();
+                    const kingX = packet.f32();
+                    const kingY = packet.f32();
                 }
             }
             break;
         }
         const type = packet.u8();
         if (type === 0) {
-            const entity = bot.entites[currentId];
+            const entity = bot.entities[currentId];
             if (entity)
                 entity.updateNetwork(packet, false);
             else {
-                throw new Error(`Tried to update a nonexistant entity. Id: ${currentId}`);
+                throw new Error(`Tried to update a nonexistant entity. Id: ${currentId} at ${packet.offset}`);
             }
         }
         else if (type === 1) {
@@ -63,7 +64,6 @@ function parseUpdatePacket(data, bot) {
             entity.id = currentId;
             entity.updateNetwork(packet, true);
             bot.entities[currentId] = entity;
-            console.log("creation", entity);
         }
         else if (type === 2) {
             let e = packet.u16();
@@ -72,6 +72,10 @@ function parseUpdatePacket(data, bot) {
             if (!entity) {
                 throw new Error(`tried to delete entity that doesnt exist ${currentId}`);
             }
+            entity.killedById = e;
+            entity.killReason = g;
+            entity.deleteNetwork(packet);
+            delete bot.entities[currentId];
         }
     }
     return { type: "update", data: bot.entities };

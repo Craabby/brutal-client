@@ -10,6 +10,7 @@ class BrutalSocket extends EventEmitter {
     constructor(server, options) {
         super();
         this.server = server;
+        this.entities = {};
         if (options == null)
             options = {};
         if (options.proxy) {

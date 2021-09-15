@@ -7,6 +7,8 @@ class Player {
         this.energy = 0;
         this.flailAngle = 0;
         this.flailRadius = 0;
+        this.angle = 0;
+        this.hue = 0;
         this.position = new vector_1.default(0, 0);
         this.flialPosition = new vector_1.default(0, 0);
         this.attached = false;
@@ -24,19 +26,26 @@ class Player {
     updateNetwork(packet, isCreation) {
         this.energy = packet.u8();
         this.position = new vector_1.default(packet.f32(), -packet.f32()).multiply(10);
+        this.angle = packet.f32();
         this.updateChainFlail(packet, isCreation);
         this.updateNetworkFlail(packet, isCreation);
+        if (isCreation) {
+            this.hue = packet.u16();
+        }
     }
     updateChainFlail(packet, isCreation) {
         const chainSegmentsLength = packet.u8();
         for (let i = 0; i < chainSegmentsLength; i++) {
-            this.chainSegments.push(new vector_1.default(packet.f32(), -packet.f32).multiply(10));
+            if (isCreation) {
+                this.chainSegments.push(new vector_1.default(0, 0));
+            }
+            this.chainSegments[i] = new vector_1.default(packet.f32(), -packet.f32()).multiply(10);
         }
     }
     updateNetworkFlail(packet, isCreation) {
-        this.flialPosition = new vector_1.default(packet.f32(), -packet.f32).multiply(10);
+        this.flialPosition = new vector_1.default(packet.f32(), -packet.f32()).multiply(10);
         this.flailAngle = -packet.f32();
-        this.flailRadius = packet.f32() * 10;
+        this.flailRadius = packet.u32() * 10;
         const flags = packet.u16();
         this.attached = !!(flags & 1);
         this.attracting = !!(flags & 2);

@@ -19,9 +19,8 @@ bot.on("message", (packet) => {
     bot.spawn("brutal-clientGH");
     if (packet.type === "leaderboard") {
         console.log(packet.data);
-        console.log(bot.entities);
-        // bot.socket.close();
-        // process.exit()
+        bot.socket.close();
+        process.exit();
     }
 });
 //# sourceMappingURL=leaderboardLogger.js.map
