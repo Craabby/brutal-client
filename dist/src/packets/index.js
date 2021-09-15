@@ -11,11 +11,12 @@ const serverbound = {
 };
 const clientbound = {
     leaderboard: require("./clientbound/leaderboard"),
+    update: require("./clientbound/update"),
     unknown: require("./clientbound/unknown"),
 };
 const clientboundOpcodes = {
     [0xb5]: "leaderboard",
-    [0xb4]: "unknown",
+    [0xb4]: "update",
     [0xa0]: "unknown",
     [0xa1]: "unknown",
     [0xa4]: "unknown",

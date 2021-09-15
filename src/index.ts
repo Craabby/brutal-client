@@ -9,12 +9,16 @@ const EventEmitter = require("events")
 
 class BrutalSocket extends EventEmitter {
   public static Vector: any = Vector // im not sure what the `any` should be. when it is Vector, i get compiler errors
+  public entities: any;
   public socket: WebSocket
   public server: string
+  public _lastUpdatePacket: number
+  public lag: number;
 
   constructor(server: string, options?: any) {
     super()
     this.server = server
+    this.entities = {};
 
     if (options == null) options = {}
 
@@ -32,6 +36,9 @@ class BrutalSocket extends EventEmitter {
     }
     this.socket = new WebSocket(server, _options)
     this._init()
+
+    this.lag = 0;
+    this._lastUpdatePacket = Date.now();
   }
 
   private _init() {

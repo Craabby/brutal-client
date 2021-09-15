@@ -20,6 +20,8 @@ class BrutalSocket extends EventEmitter {
             } }, options);
         this.socket = new WebSocket(server, _options);
         this._init();
+        this.lag = 0;
+        this._lastUpdatePacket = Date.now();
     }
     _init() {
         this.socket.on("open", () => this._onopen());
