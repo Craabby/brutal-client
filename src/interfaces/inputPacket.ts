@@ -1,10 +1,10 @@
-import Vector from "../vector"
+import Vector from "../vector";
 
 interface InputPacket {
-  mouse: Vector
+  mouse: Vector;
   flags: {
-    playerIsMoving: boolean
-  }
+    playerIsMoving: boolean;
+  };
 }
 
-export default InputPacket
+export default InputPacket;

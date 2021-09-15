@@ -1,6 +1,6 @@
 interface ParsedClientboundPacket {
-  type: string
-  data: any
+  type: string;
+  data: any;
 }
 
-export default ParsedClientboundPacket
+export default ParsedClientboundPacket;

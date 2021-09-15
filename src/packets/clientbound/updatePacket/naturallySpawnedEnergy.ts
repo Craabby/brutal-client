@@ -1,26 +1,26 @@
-import { Reader } from "../../../coder"
-import Vector from "../../../vector"
+import { Reader } from "../../../coder";
+import Vector from "../../../vector";
 
 class NaturallySpawnedEnergy {
-  public position: Vector = new Vector(0, 0)
-  public angle: number = 0
-  public hue: number = 0
-  public name: string = ""
+  public position: Vector = new Vector(0, 0);
+  public angle: number = 0;
+  public hue: number = 0;
+  public name: string = "";
 
   updateNetwork(packet: Reader, isCreation: boolean): void {
-    packet.u16() // calvin wtf is this
+    packet.u16(); // calvin wtf is this
 
-    this.position = new Vector(packet.f32(), -packet.f32()).multiply(10)
-    this.angle = packet.f32()
+    this.position = new Vector(packet.f32(), -packet.f32()).multiply(10);
+    this.angle = packet.f32();
 
     if (isCreation) {
-      this.hue = packet.u16()
+      this.hue = packet.u16();
     }
   }
 
   deleteNetwork(packet: Reader): void {
-    packet.u8()
+    packet.u8();
   }
 }
 
-export default NaturallySpawnedEnergy
+export default NaturallySpawnedEnergy;

@@ -1,7 +1,7 @@
 interface LeaderboardEntry {
-  name: string
-  id: number
-  score: number
+  name: string;
+  id: number;
+  score: number;
 }
 
-export default LeaderboardEntry
+export default LeaderboardEntry;
