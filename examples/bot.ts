@@ -1,20 +1,20 @@
-import BrutalSocket from "../src"
-import ParsedClientboundPacket from "../src/interfaces/parsedClientboundPacket"
+import BrutalSocket from "../src";
+import ParsedClientboundPacket from "../src/interfaces/parsedClientboundPacket";
 
-const bot: BrutalSocket = new BrutalSocket("ws://158.69.123.15:8100/")
+const bot: BrutalSocket = new BrutalSocket("ws://158.69.123.15:8100/");
 
 bot.on("open", () => {
   setInterval(() => {
-    bot.spawn("ddddddddddddddd")
-  }, 1000)
-})
+    bot.spawn("ddddddddddddddd");
+  }, 1000);
+});
 
 bot.on("close", (code: number) => {
-  console.log("bot closed", code)
-})
+  console.log("bot closed", code);
+});
 bot.on("error", (error: Error) => {
-  console.log("bot error", error)
-})
+  console.log("bot error", error);
+});
 
 bot.on("message", (packet: ParsedClientboundPacket) => {
   bot.send("input", {
@@ -22,5 +22,5 @@ bot.on("message", (packet: ParsedClientboundPacket) => {
     flags: {
       playerIsMoving: true,
     },
-  })
-})
+  });
+});
