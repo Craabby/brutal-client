@@ -1,8 +1,8 @@
-import { Reader } from "../../../coder"
+import { Reader } from "../../../coder";
 
 class MapObject1 {
-	updateNetwork(packet: Reader, isCreation: boolean): void {}
-	deleteNetwork() {}
+  updateNetwork(packet: Reader, isCreation: boolean): void {}
+  deleteNetwork() {}
 }
 
-export default MapObject1
+export default MapObject1;
