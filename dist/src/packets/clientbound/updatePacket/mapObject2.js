@@ -18,8 +18,7 @@ class MapObject2 {
         let u;
         let coreRotation;
         if (this.type === 0) {
-            if (packet.u8()) {
-            }
+            packet.u8();
             c = packet.u8();
         }
         else if (this.type === 5) {

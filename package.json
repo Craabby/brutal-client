@@ -1,19 +1,19 @@
 {
-  "name": "brutalsocket",
-  "version": "1.0.0",
+  "name": "brutal-client",
+  "version": "2.0.0",
   "description": "",
   "main": "./dist/src/index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Crabby",
+  "license": "MIT",
   "dependencies": {
-    "ssl-root-cas": "^1.3.1",
+    "typescript": "^4.4.3",
     "ws": "^8.2.2"
   }
 }

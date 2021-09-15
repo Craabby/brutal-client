@@ -1,1 +1,1 @@
-{"version":3,"file":"parsedClientboundPacket.js","sourceRoot":"","sources":["../../../src/interfaces/parsedClientboundPacket.ts"],"names":[],"mappings":"","sourcesContent":["interface ParsedClientboundPacket {\n  type: string\n  data: any\n}\n\nexport default ParsedClientboundPacket\n"]}
+{"version":3,"file":"parsedClientboundPacket.js","sourceRoot":"","sources":["../../../src/interfaces/parsedClientboundPacket.ts"],"names":[],"mappings":"","sourcesContent":["interface ParsedClientboundPacket {\n  type: string;\n  data: any;\n}\n\nexport default ParsedClientboundPacket;\n"]}
